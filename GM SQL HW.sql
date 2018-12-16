@@ -1,13 +1,17 @@
 USE sakila;
 
+
+-- Table Selction
 -- 1a
 SELECT first_name, last_name
 FROM actor;
 
+-- Table Selection with Alias
 -- 1b 
 SELECT CONCAT (first_name, ' ', last_name) as 'Actor Name'
 From actor; 
 
+-- Table Selection with Filter
 -- 2a 
 select actor_id, first_name, last_name
 from actor
@@ -27,6 +31,7 @@ select country_id, country
 from country
 where country in ('Afghanistan', 'Bangladesh', 'China');
 
+-- Table Alteration
 -- 3a 
 ALTER TABLE actor
 add middle_name varchar(45);
@@ -39,6 +44,7 @@ modify column middle_name BLOB;
 ALTER TABLE actor
 DROP COLUMN middle_name; 
 
+-- Table Selection with Aggregate Functions and Group By
 -- 4a
 SELECT last_name, count(last_name)
 FROM actor
@@ -62,9 +68,11 @@ CASE WHEN first_name = 'Groucho' THEN 'Mucho Groucho'
 ELSE 'Groucho' END
 where actor_id = 172;
 
+-- Display Table's Creation Statement
 -- 5a
 SHOW CREATE TABLE address;
 
+-- Table Joins
 -- 6a
 SELECT s.first_name, s.last_name, a.address
 FROM staff s
@@ -101,6 +109,8 @@ ON (c.customer_id = p.customer_id)
 GROUP BY c.first_name, c.last_name
 ORDER BY c.last_name, c.first_name;
 
+
+-- Subqueries
 -- 7a
 SELECT title
 from film
@@ -237,6 +247,8 @@ ORDER by (SELECT SUM(amount)
 		)
 	) DESC;
 
+
+-- Create and Drop View
 -- 8a 
 CREATE VIEW Top_Five_Genres AS
 SELECT name as 'Category', 
