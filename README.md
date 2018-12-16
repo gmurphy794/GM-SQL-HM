@@ -1,1 +1,1 @@
-# GM-SQL-HM
+# SQL Examples
